@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edem Cyrille Sossouvi — Optimiseur de Processus</title>
+<meta name="description" content="Portfolio d'Edem Cyrille Sossouvi — Responsable Opérations &amp; Optimisation des Processus, Data &amp; Performance, Management d'Équipes.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23090b12' stroke='%2300f0d6' stroke-width='4'/%3E%3Ctext x='50' y='66' font-size='42' font-family='Arial' font-weight='700' fill='%2300f0d6' text-anchor='middle'%3EEC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=2">
+</head>
+<body>
+
+<div class="bg-fx" aria-hidden="true">
+  <canvas id="particles"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+</div>
+
+<div class="progress-bar" id="scrollProgress"></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="nav-logo">
+    <span class="logo-ring">EC</span>
+    <span class="logo-text">Edem<strong>Cyrille</strong></span>
+  </a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#profil" data-nav>Profil</a>
+    <a href="#competences" data-nav>Compétences</a>
+    <a href="#experience" data-nav>Expérience</a>
+    <a href="#certifications" data-nav>Certifications</a>
+    <a href="#contact" data-nav>Contact</a>
+  </nav>
+  <a class="btn btn-ghost nav-cv" href="assets/cv/CV_Edem_Cyrille_Sossouvi.pdf" download>Télécharger le CV</a>
+  <button class="burger" id="burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow" data-reveal>Ouvert à la mobilité · Lomé, Togo</p>
+      <div class="avatar-wrap" data-reveal>
+        <div class="avatar-ring">
+          <div class="avatar-mono" id="avatarSlot">
+            <img src="assets/img/photo.jpg" alt="Photo d'Edem Cyrille Sossouvi" id="avatarPhoto" onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='flex';">
+            <div class="avatar-fallback" id="avatarFallback">EC</div>
+          </div>
+        </div>
+        <span class="status-dot" title="Disponible pour de nouvelles opportunités"></span>
+      </div>
+      <h1 data-reveal>EDEM CYRILLE <span class="grad-text">SOSSOUVI</span></h1>
+      <p class="role-line" data-reveal>Responsable Opérations &amp; Optimisation des Processus <span class="dot">•</span> Data &amp; Performance <span class="dot">•</span> Management d'Équipes</p>
+      <p class="hero-tagline" data-reveal>Je transforme des opérations complexes en systèmes pilotés par la donnée — processus, équipes et performance, alignés vers un même résultat.</p>
+      <div class="hero-cta" data-reveal>
+        <a class="btn btn-primary" id="waHero" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 32 32" class="ic"><path fill="currentColor" d="M16 3C9 3 3 9 3 16c0 2.4.7 4.7 1.9 6.6L3 29l6.6-1.8A13 13 0 0 0 16 29c7 0 13-6 13-13S23 3 16 3Zm0 23.5c-2.1 0-4.1-.6-5.8-1.6l-.4-.3-3.9 1 1-3.8-.3-.4A10.5 10.5 0 1 1 26.5 16 10.5 10.5 0 0 1 16 26.5Zm5.9-7.8c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.3-.7.1-1.8-.9-3-1.6-4.2-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4-.1-.6-.1-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.5c.2.2 2.3 3.5 5.6 4.8 2.8 1.1 3.4.9 4-.2.4-.6.6-1.6.4-1.9-.1-.1-.3-.2-.6-.3Z"/></svg>
+          Me contacter sur WhatsApp
+        </a>
+        <a class="btn btn-outline" href="assets/cv/CV_Edem_Cyrille_Sossouvi.pdf" download>
+          <svg viewBox="0 0 24 24" class="ic"><path fill="currentColor" d="M12 3v11.2l4-4 1.4 1.4L11 18 4.6 11.6 6 10.2l4 4V3h2ZM4 20h16v2H4z"/></svg>
+          Télécharger le CV
+        </a>
+      </div>
+      <div class="social-row" data-reveal id="socialRow"></div>
+      <button class="scroll-cue" id="scrollCue" aria-label="Défiler"><span></span></button>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" id="stats">
+    <div class="section-inner">
+      <div class="stats-grid" id="statsGrid"></div>
+    </div>
+  </section>
+
+  <!-- PROFIL -->
+  <section class="section" id="profil">
+    <div class="section-inner">
+      <p class="tag" data-reveal>01 · Profil</p>
+      <h2 data-reveal>Optimiser ce qui fonctionne, <span class="grad-text">réparer ce qui grince</span>.</h2>
+      <div class="profil-grid">
+        <p class="profil-text" data-reveal>
+          Professionnel de l'optimisation des processus, des opérations et de la performance, avec une expérience dans
+          la banque, les opérations technologiques, le conseil et la transformation digitale. J'interviens à l'interface
+          entre <strong>processus, données, équipes et performance</strong> pour structurer les activités, fiabiliser les
+          opérations et améliorer la prise de décision.
+        </p>
+        <p class="profil-text" data-reveal>
+          Mon parcours couvre le pilotage opérationnel, l'analyse de données, le management d'équipes, la relation
+          client, le développement commercial, la qualité et la conformité. Habitué à concevoir des procédures,
+          tableaux de bord et systèmes de suivi adaptés aux enjeux métiers — avec une approche orientée
+          <strong> résultats, amélioration continue</strong> et transformation des problématiques opérationnelles en
+          solutions concrètes.
+        </p>
+      </div>
+      <div class="edu-row" data-reveal>
+        <div class="edu-card">
+          <span class="edu-year">2021</span>
+          <p><strong>Licence fondamentale</strong> — Comptabilité, Contrôle &amp; Audit<br><span class="muted">Université de Lomé, Togo</span></p>
+        </div>
+        <div class="edu-card">
+          <span class="edu-year">2017</span>
+          <p><strong>Baccalauréat, Série D</strong> — Mathématiques &amp; SVT<br><span class="muted">Lycée NDA</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETENCES -->
+  <section class="section alt" id="competences">
+    <div class="section-inner">
+      <p class="tag" data-reveal>02 · Compétences</p>
+      <h2 data-reveal>Un répertoire construit <span class="grad-text">sur le terrain</span></h2>
+      <div class="skills-grid" id="skillsGrid"></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="section-inner">
+      <p class="tag" data-reveal>03 · Expérience</p>
+      <h2 data-reveal>Un parcours <span class="grad-text">multi-marchés</span></h2>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section alt" id="certifications">
+    <div class="section-inner">
+      <p class="tag" data-reveal>04 · Certifications</p>
+      <h2 data-reveal>Apprentissage <span class="grad-text">continu</span></h2>
+      <div class="cert-grid" id="certGrid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="section-inner">
+      <p class="tag" data-reveal>05 · Contact</p>
+      <h2 data-reveal>Construisons <span class="grad-text">la prochaine étape</span></h2>
+      <p class="profil-text" data-reveal>Un projet, une opportunité, une mission de conseil ? Le plus rapide est WhatsApp — un message est déjà prêt.</p>
+      <div class="contact-cta" data-reveal>
+        <a class="btn btn-primary btn-lg" id="waContact" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 32 32" class="ic"><path fill="currentColor" d="M16 3C9 3 3 9 3 16c0 2.4.7 4.7 1.9 6.6L3 29l6.6-1.8A13 13 0 0 0 16 29c7 0 13-6 13-13S23 3 16 3Zm0 23.5c-2.1 0-4.1-.6-5.8-1.6l-.4-.3-3.9 1 1-3.8-.3-.4A10.5 10.5 0 1 1 26.5 16 10.5 10.5 0 0 1 16 26.5Zm5.9-7.8c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.3-.7.1-1.8-.9-3-1.6-4.2-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4-.1-.6-.1-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.5c.2.2 2.3 3.5 5.6 4.8 2.8 1.1 3.4.9 4-.2.4-.6.6-1.6.4-1.9-.1-.1-.3-.2-.6-.3Z"/></svg>
+          Démarrer une conversation WhatsApp
+        </a>
+        <a class="btn btn-outline btn-lg" id="mailContact" href="#">
+          <svg viewBox="0 0 24 24" class="ic"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5Z"/></svg>
+          Envoyer un e-mail
+        </a>
+      </div>
+      <div class="social-row social-row-lg" id="socialRowContact"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="section-inner footer-inner">
+    <p>© <span id="year"></span> Edem Cyrille Sossouvi — Optimiseur de Processus.</p>
+    <button id="backTop" class="btn btn-ghost btn-sm">↑ Haut de page</button>
+  </div>
+</footer>
+
+<script src="assets/js/script.js?v=2"></script>
+</body>
+</html>
