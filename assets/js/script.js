@@ -24,10 +24,33 @@ const ICONS = {
   github: `<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.85-2.35 4.7-4.58 4.95.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>`,
   mail: `<svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5Z"/></svg>`,
   cert: `<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Zm0 4.8 5.2 2.3v3.4c0 3.3-2.5 5.9-5.2 6.9-2.7-1-5.2-3.6-5.2-6.9V9.1L12 6.8Z"/></svg>`,
-  external: `<svg viewBox="0 0 24 24"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>`
+  external: `<svg viewBox="0 0 24 24"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>`,
+  people: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 5 18.5V20"/><circle cx="9.5" cy="8" r="3.2"/><path d="M16 8.2a2.8 2.8 0 1 1 1 5.4"/><path d="M20 20v-1.3a3 3 0 0 0-2-2.8"/></svg>`,
+  globe: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>`,
+  percent: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><circle cx="7.5" cy="7.5" r="2"/><circle cx="16.5" cy="16.5" r="2"/></svg>`,
+  coins: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="9" cy="7" rx="6" ry="3.2"/><path d="M3 7v6c0 1.8 2.7 3.2 6 3.2s6-1.4 6-3.2V7"/><path d="M15 10.3c2.9.2 6 1.5 6 3.5s-2.7 3.2-6 3.2-6-1.4-6-3.2"/><path d="M9 13.2v3.6M15 13.8v3.7"/></svg>`,
+  shield: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 5.5v6c0 4.6 3.2 7.9 7.5 9.5 4.3-1.6 7.5-4.9 7.5-9.5v-6L12 3Z"/><path d="m9 12 2 2 4-4"/></svg>`,
+  clock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>`,
+  target: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg>`,
+  building: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="10" height="17" rx="1"/><path d="M15 9.5h4.5v11H15"/><path d="M8.5 7.5h3M8.5 11h3M8.5 14.5h3"/></svg>`
 };
 
+function iconForStat(s){
+  const num = s.num.toLowerCase();
+  const label = s.label.toLowerCase();
+  if(num.includes("%")) return ICONS.percent;
+  if(label.includes("marché") || label.includes("pays")) return ICONS.globe;
+  if(label.includes("fcfa") || label.includes("gmv") || label.includes("bonus")) return ICONS.coins;
+  if(label.includes("incident")) return ICONS.shield;
+  if(label.includes("temps")) return ICONS.clock;
+  if(label.includes("département")) return ICONS.building;
+  if(label.includes("coursier") || label.includes("utilisateur") || label.includes("profil") || label.includes("client") || label.includes("collaborateur")) return ICONS.people;
+  return ICONS.target;
+}
+
 // ===================== DATA =====================
+const MARKETS_11 = ["Togo","Bénin","Cameroun","Mali","RDC","Botswana","Zambie","Zimbabwe","Namibie","République dominicaine","République du Costa Rica"];
+
 const STATS = [
   { num: "850", label: "coursiers pilotés dans le dispositif d'activation Yango (17 mois)" },
   { num: "155K+", label: "commandes soutenues par les campagnes d'activation et de réactivation" },
@@ -40,7 +63,7 @@ const STATS = [
   { num: "92%", label: "de satisfaction client maintenue (Bolt, support VTC)" },
   { num: "25%", label: "d'amélioration qualité obtenue en 6 semaines (Bolt, coaching)" },
   { num: "60%", label: "de temps de reporting économisé grâce à l'automatisation (MC Impact)" },
-  { num: "11", label: "marchés internationaux pilotés simultanément" },
+  { num: "11", label: "marchés internationaux pilotés simultanément", markets: MARKETS_11 },
 ];
 
 const SKILLS = [
@@ -54,13 +77,14 @@ const SKILLS = [
   { title: "IA & Digitalisation", chips: ["ChatGPT","Gemini","Claude","Automatisation","Transformation digitale","Supabase","Neon","Vercel","GitHub"] },
 ];
 
-const MARKETS_11 = ["Togo","Bénin","Cameroun","Mali","RDC","Botswana","Zambie","Zimbabwe","Namibie","République dominicaine","République du Costa Rica"];
-
 const TIMELINE = [
   {
+    badge: "Actuel",
     role: "Responsable des Opérations",
     org: "MC Impact Togo · À distance, Lomé",
     period: "Oct. 2025 — Présent",
+    intro: "Structuration du pilotage commercial et opérationnel d'une scale-up — ventes, projets, partenaires — avec un focus sur l'automatisation du reporting et la digitalisation des processus.",
+    skills: ["Pilotage opérationnel","Power BI","Automatisation","Procédures (SOP)","Reporting automatisé","Transformation digitale"],
     bullets: [
       "Structuré le pilotage commercial et opérationnel de l'entreprise : ventes, projets, partenaires et systèmes de reporting.",
       "Conçu un système structuré de suivi des opportunités sous Google Sheets & Power BI pour centraliser les prospects et le pipeline.",
@@ -70,9 +94,12 @@ const TIMELINE = [
     ]
   },
   {
+    badge: "Leadership",
     role: "Responsable Centre d'Appels — Opérations Télémarketing",
     org: "Yango Côte d'Ivoire · Serviap - Yango Group · À distance, Lomé",
     period: "Oct. 2024 — Fév. 2026",
+    intro: "Structuration et développement du département Télémarketing, pilotage simultané de l'engagement, la réactivation, les campagnes d'incitation et le dispatch sur un dispositif à grande échelle.",
+    skills: ["Management d'équipes","Pilotage par indicateurs","CRM","Activation","Reporting automatisé"],
     bullets: [
       "Structuré et développé le département Télémarketing, faisant évoluer l'équipe de 3 à 5 collaborateurs pour piloter simultanément l'engagement, la réactivation, les campagnes d'incitation et le dispatch.",
       "Contribué au pilotage d'un dispositif d'activation d'environ 850 coursiers sur 17 mois, soutenant ~155 000 commandes pour un GMV estimé à ~930 M FCFA.",
@@ -83,9 +110,12 @@ const TIMELINE = [
     ]
   },
   {
+    badge: "Recrutement",
     role: "Responsable Centre d'Appels — Opérations de Recrutement des Coursiers",
     org: "Yango Côte d'Ivoire · Serviap - Yango Group · À distance, Lomé",
     period: "Déc. 2024 — Fév. 2026",
+    intro: "Pilotage d'une équipe dédiée au recrutement des coursiers, de la vérification documentaire à l'intégration, avec un objectif de conversion largement dépassé.",
+    skills: ["Management d'équipes","Contrôle documentaire","Conversion","Procédures (SOP)"],
     bullets: [
       "Piloté une équipe dédiée de 5 collaborateurs sur le recrutement des coursiers : vérification documentaire, validation des candidatures, accompagnement et intégration.",
       "Dépassé l'objectif de conversion fixé à 10%, avec des performances atteignant 30% selon les campagnes et périodes.",
@@ -94,9 +124,12 @@ const TIMELINE = [
     ]
   },
   {
+    badge: "Expansion internationale",
     role: "Responsable Support des Opérations",
     org: "Yango Zambie · Serviap - Yango Group · À distance, Lomé",
     period: "Fév. 2025 — Août 2025",
+    intro: "Transfert du modèle opérationnel développé en Côte d'Ivoire vers un nouveau marché anglophone, avec préparation d'une relève managériale locale.",
+    skills: ["Gestion interculturelle","Transfert de modèle opérationnel","Coaching","Relève managériale"],
     bullets: [
       "Transféré en Zambie le modèle opérationnel développé en Côte d'Ivoire (recrutement des coursiers et télémarketing).",
       "Managé une équipe locale de 4 collaborateurs anglophones, en adaptant les méthodes de communication au contexte local.",
@@ -105,9 +138,12 @@ const TIMELINE = [
     ]
   },
   {
+    badge: "Expansion internationale",
     role: "Responsable Support des Opérations",
     org: "Yango Bolivie · Serviap - Yango Group · À distance, Lomé",
     period: "Fév. 2025 — Août 2025",
+    intro: "Déploiement du modèle opérationnel en Bolivie, avec une approche orientée transfert de compétences et autonomisation de l'équipe locale.",
+    skills: ["Transfert de compétences","Formation","Autonomie décisionnelle","Management multisites"],
     bullets: [
       "Accompagné le déploiement du modèle opérationnel en Bolivie, en adaptant les processus aux réalités du marché local.",
       "Formé et accompagné une équipe locale de 4 collaborateurs sur les processus de recrutement et d'engagement.",
@@ -116,9 +152,12 @@ const TIMELINE = [
     ]
   },
   {
+    badge: "Amélioration continue",
     role: "Coach Qualité — Opérations & Qualité, Support Bolt",
     org: "Majorel Africa - Teleperformance · Sur site, Lomé",
     period: "Août 2024 — Oct. 2024",
+    intro: "Structuration d'un dispositif d'évaluation qualité homogène et accélération de la montée en compétence des équipes support.",
+    skills: ["Coaching","Amélioration continue","Conformité SLA","Évaluation qualité"],
     bullets: [
       "Amélioré de 25% la qualité des opérations en six semaines, en structurant un dispositif d'évaluation fondé sur des critères homogènes et des séances de coaching ciblées.",
       "Accéléré la montée en compétence de plus de 20 agents sur la conformité SLA, la documentation des dossiers et les procédures d'escalade.",
@@ -127,9 +166,12 @@ const TIMELINE = [
     ]
   },
   {
+    badge: "Expansion",
     role: "Chargé des Opérations d'Expansion, Support Bolt",
     org: "Majorel Africa - Teleperformance · Sur site, Lomé",
     period: "Fév. 2024 — Août 2024",
+    intro: "Pilotage des opérations d'activation des chauffeurs sur 11 marchés simultanément, avec conception du module de formation officiel du département.",
+    skills: ["Expansion multi-marchés","Contrôle documentaire","Formation","Conformité"],
     bullets: [
       "Atteint 120% des objectifs de conversion d'activation des chauffeurs, en optimisant le parcours d'intégration et la vérification documentaire.",
       "Structuré les opérations d'activation sur 11 marchés simultanément, avec des procédures communes de contrôle documentaire et de conformité.",
@@ -140,9 +182,12 @@ const TIMELINE = [
     ]
   },
   {
+    badge: "Gestion des risques",
     role: "Chargé des Opérations Sécurité · Micromobilité · Repas",
     org: "Majorel Africa - Teleperformance · Sur site, Lomé",
     period: "Jan. 2023 — Fév. 2024",
+    intro: "Prise en charge d'investigations complexes et de la continuité opérationnelle sur plusieurs verticales (VTC, micromobilité, food) et marchés européens.",
+    skills: ["Gestion des risques","Investigations","Formation","Continuité opérationnelle"],
     bullets: [
       "Couvert plus de 140 000 utilisateurs-mois VTC sur sept marchés européens (France, Belgique, Italie, Portugal, Malte, Chypre, Slovénie).",
       "Réduit d'environ 45% les incidents critiques sur son périmètre, en structurant des modèles de communication et des procédures de traitement.",
@@ -152,9 +197,12 @@ const TIMELINE = [
     ]
   },
   {
+    badge: "Support client",
     role: "Chargé du Support Client — Transport VTC",
     org: "Majorel Africa - Teleperformance · Sur site, Lomé",
     period: "Oct. 2022 — Déc. 2023",
+    intro: "Traitement de files de support à fort volume avec un haut niveau de satisfaction client maintenu dans la durée.",
+    skills: ["Relation client","Zendesk","Qualité de service","Gestion des réclamations"],
     bullets: [
       "Maintenu un niveau de satisfaction client de 92%, en traitant des files de tickets à fort volume sur Zendesk.",
       "Réduit de 25% le volume de demandes de support récurrentes, en identifiant les motifs fréquents de contact.",
@@ -162,9 +210,12 @@ const TIMELINE = [
     ]
   },
   {
+    badge: "Formation",
     role: "Stagiaire — Opérations Bancaires & Relation Client, Support Commercial",
     org: "BIA Togo · Groupe Attijariwafa Bank · Sur site, Lomé",
     period: "Mai 2022 — Sept. 2022",
+    intro: "Première expérience bancaire : contrôle de conformité, gestion de dossiers de crédit et prospection commerciale B2B.",
+    skills: ["KYC","Conformité","Prospection B2B","Sopra Banking Software"],
     bullets: [
       "Contribué à l'acquisition de 15 nouveaux clients particuliers et entreprises via la prospection B2B.",
       "Analysé et contrôlé plus de 1 500 comptes clients, contribuant à une réduction de 25% des écarts de conformité.",
@@ -172,9 +223,12 @@ const TIMELINE = [
     ]
   },
   {
+    badge: "Entrepreneuriat",
     role: "Promoteur & Consultant en Optimisation des Processus",
     org: "Enixis Corp · Sur site, Lomé",
     period: "Fév. 2020 — Actuel",
+    intro: "Accompagnement d'entrepreneurs et de PME dans l'amélioration de leur performance opérationnelle, de la formation à la livraison de solutions data.",
+    skills: ["Conseil","Formation","Power BI","Accompagnement PME"],
     bullets: [
       "Accompagné des entrepreneurs, PME et équipes professionnelles dans l'amélioration de leur performance opérationnelle.",
       "Conçu un programme de formation de 9 modules en marketing digital, structuré autour de cas pratiques et de solutions d'IA.",
@@ -217,6 +271,11 @@ const mailLink = `mailto:${CONTACT.email}?subject=${encodeURIComponent(MAIL_SUBJ
 const mailContact = document.getElementById("mailContact");
 if (mailContact) mailContact.href = mailLink;
 
+const menuMail = document.getElementById("menuMail");
+if (menuMail) menuMail.href = mailLink;
+const menuLinkedin = document.getElementById("menuLinkedin");
+if (menuLinkedin) menuLinkedin.href = CONTACT.linkedin;
+
 function socialHref(item){
   if(item.key === "whatsapp") return waLink;
   if(item.key === "mail") return mailLink;
@@ -235,12 +294,35 @@ renderSocials(document.getElementById("socialRowContact"));
 
 // ===================== RENDER STATS =====================
 const statsGrid = document.getElementById("statsGrid");
-statsGrid.innerHTML = STATS.map(s => `
+statsGrid.innerHTML = STATS.map(s => {
+  const marketsHtml = s.markets ? `
+    <div class="stat-markets">
+      <span class="stat-markets-preview">(${s.markets.slice(0, 3).join(", ")}, …)</span>
+      <span class="stat-markets-full">(${s.markets.join(", ")})</span>
+    </div>
+    <button class="stat-toggle" type="button" data-more="Voir tous les marchés" data-less="Voir moins">
+      <span class="stat-toggle-label">Voir tous les marchés</span>
+      <svg class="ic-chev" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+    </button>
+  ` : ``;
+  return `
   <div class="stat-card" data-reveal>
+    <div class="stat-icon">${iconForStat(s)}</div>
     <div class="stat-num" data-count="${s.num}">0</div>
     <div class="stat-label">${s.label}</div>
+    ${marketsHtml}
   </div>
-`).join("");
+`;
+}).join("");
+
+statsGrid.addEventListener("click", (e) => {
+  const btn = e.target.closest(".stat-toggle");
+  if(!btn) return;
+  const card = btn.closest(".stat-card");
+  const label = btn.querySelector(".stat-toggle-label");
+  const expanded = card.classList.toggle("markets-expanded");
+  label.textContent = expanded ? btn.dataset.less : btn.dataset.more;
+});
 
 // ===================== RENDER SKILLS =====================
 const skillsGrid = document.getElementById("skillsGrid");
@@ -252,23 +334,53 @@ skillsGrid.innerHTML = SKILLS.map(s => `
 `).join("");
 
 // ===================== RENDER TIMELINE =====================
+const TL_PREVIEW_COUNT = 3;
+function renderBullet(b){
+  return b && b.markets
+    ? `<li class="tl-markets">${b.markets.join(", ")}</li>`
+    : `<li>${b}</li>`;
+}
 const timelineEl = document.getElementById("timeline");
-timelineEl.innerHTML = TIMELINE.map((t, i) => `
-  <div class="tl-item ${i % 2 ? 'red' : ''}" data-reveal>
+timelineEl.innerHTML = TIMELINE.map((t, i) => {
+  const visible = t.bullets.slice(0, TL_PREVIEW_COUNT);
+  const hidden = t.bullets.slice(TL_PREVIEW_COUNT);
+  return `
+  <div class="tl-item ${i % 2 ? 'orange' : ''}" data-reveal>
     <span class="tl-dot"></span>
     <div class="tl-card">
-      <div class="tl-head">
-        <span class="tl-role">${t.role}</span>
+      <div class="tl-top">
+        <span class="tl-badge">${t.badge}</span>
         <span class="tl-period">${t.period}</span>
       </div>
+      <span class="tl-role">${t.role}</span>
       <div class="tl-org">${t.org}</div>
-      <ul class="tl-list">${t.bullets.map(b => b && b.markets
-        ? `<li class="tl-markets">${b.markets.join(", ")}</li>`
-        : `<li>${b}</li>`
-      ).join("")}</ul>
+      <p class="tl-intro">${t.intro}</p>
+      <p class="tl-subhead">Réalisations clés</p>
+      <ul class="tl-list">${visible.map(renderBullet).join("")}</ul>
+      ${hidden.length ? `
+        <ul class="tl-list tl-list-more">${hidden.map(renderBullet).join("")}</ul>
+        <button class="tl-toggle" type="button" data-more="Voir plus (${hidden.length} autre${hidden.length > 1 ? 's' : ''})" data-less="Voir moins">
+          <span class="tl-toggle-label">Voir plus (${hidden.length} autre${hidden.length > 1 ? 's' : ''})</span>
+          <svg class="ic-chev" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+        </button>
+      ` : ``}
+      ${t.skills && t.skills.length ? `
+        <p class="tl-subhead">Compétences mobilisées</p>
+        <div class="tl-skills">${t.skills.map(s => `<span class="chip">${s}</span>`).join("")}</div>
+      ` : ``}
     </div>
   </div>
-`).join("");
+`;
+}).join("");
+
+timelineEl.addEventListener("click", (e) => {
+  const btn = e.target.closest(".tl-toggle");
+  if(!btn) return;
+  const card = btn.closest(".tl-card");
+  const label = btn.querySelector(".tl-toggle-label");
+  const expanded = card.classList.toggle("expanded");
+  label.textContent = expanded ? btn.dataset.less : btn.dataset.more;
+});
 
 // ===================== RENDER CERTIFICATIONS =====================
 const certGrid = document.getElementById("certGrid");
@@ -348,13 +460,29 @@ function onScroll(){
 window.addEventListener("scroll", onScroll, { passive: true });
 onScroll();
 
-// mobile burger
-const burger = document.getElementById("burger");
-const navLinksEl = document.getElementById("navLinks");
-burger.addEventListener("click", () => {
-  navLinksEl.classList.toggle("open");
+// expansion menu
+const menuToggle = document.getElementById("menuToggle");
+const menuPanel = document.getElementById("menuPanel");
+const menuBackdrop = document.getElementById("menuBackdrop");
+const menuClose = document.getElementById("menuClose");
+
+function openMenu(){
+  document.body.classList.add("menu-open");
+  menuToggle.setAttribute("aria-expanded", "true");
+  menuPanel.setAttribute("aria-hidden", "false");
+}
+function closeMenu(){
+  document.body.classList.remove("menu-open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuPanel.setAttribute("aria-hidden", "true");
+}
+menuToggle.addEventListener("click", () => {
+  document.body.classList.contains("menu-open") ? closeMenu() : openMenu();
 });
-navLinksEl.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinksEl.classList.remove("open")));
+menuClose.addEventListener("click", closeMenu);
+menuBackdrop.addEventListener("click", closeMenu);
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeMenu(); });
+menuPanel.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
 
 // back to top & scroll cue
 document.getElementById("backTop").addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
