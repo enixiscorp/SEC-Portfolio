@@ -249,14 +249,14 @@ const EVENTS = [
   {
     title: "Tech MeetUP - Edition 5",
     role: "Speaker",
-    date: "2025",
+    date: "2026",
     image: "assets/events/Tech MeetUP- Edition 5 - Edem Cyrille SOSSOUVI.jpg",
     description: "Intervention lors de la 5ème édition du Tech MeetUP."
   },
   {
     title: "Panel ACAN - SEC Pro",
     role: "Panéliste",
-    date: "2024",
+    date: "2026",
     image: "assets/events/Pannel ACAN - SEC Pro.jpeg",
     description: "Échanges et retours d'expérience sur les enjeux professionnels actuels."
   },
@@ -270,30 +270,30 @@ const EVENTS = [
   {
     title: "Management & Méthodologie Agile",
     role: "Formateur",
-    date: "2023",
+    date: "2025",
     image: "assets/events/Affiche_Formation_Managemtn et Méthodologie Agile avec Gestion des imprévus.jpg",
     description: "Formation avec gestion des imprévus."
   },
   {
-    title: "Conférence Edem Cyrille",
-    role: "Intervenant",
+    title: "Diriger avec empathie ! Construire des équipes interfonctionnelles à l'ère de l'IA",
+    role: "Keynote Speaker",
     date: "2023",
     image: "assets/events/Edem Cyrile.jpg",
-    description: "Partage d'expérience et parcours professionnel."
+    description: "Partage de bonnes pratiques pour renforcer la collaboration, développer un leadership centré sur l'humain et maintenir la performance (IA)."
   },
   {
-    title: "Conférence Edem Cyrille 2",
-    role: "Intervenant",
+    title: "L'IA aux commandes ? Redéfinir le rôle et la carrière du Product Manager",
+    role: "Workshop Trainer",
     date: "2022",
     image: "assets/events/Edem Cyrille 2.jpg",
-    description: "Suite des échanges sur l'optimisation des processus."
+    description: "Analyse de l'impact de l'IA sur les responsabilités du Product Manager, les compétences émergentes et les opportunités de carrière."
   },
   {
-    title: "Évènement WhatsApp",
-    role: "Participant",
+    title: "Keynote : Analyse de données avec l'AWTF",
+    role: "Intervenant",
     date: "2025",
     image: "assets/events/WhatsApp Image 2025-05-06 à 19.24.22_fb286c4a.jpg",
-    description: "Retour sur un évènement communautaire."
+    description: "Intervention en présentiel au NunyaLab sur l'analyse de données."
   }
 ];
 
