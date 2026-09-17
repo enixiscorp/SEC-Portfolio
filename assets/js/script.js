@@ -238,6 +238,65 @@ const TIMELINE = [
   },
 ];
 
+const EVENTS = [
+  {
+    title: "IA Masterclass 2026",
+    role: "Intervenant Principal",
+    date: "2026",
+    image: "assets/events/IA MASTERCLASS 2026.jpg",
+    description: "Session de formation et d'échange sur les intelligences artificielles."
+  },
+  {
+    title: "Tech MeetUP - Edition 5",
+    role: "Speaker",
+    date: "2025",
+    image: "assets/events/Tech MeetUP- Edition 5 - Edem Cyrille SOSSOUVI.jpg",
+    description: "Intervention lors de la 5ème édition du Tech MeetUP."
+  },
+  {
+    title: "Panel ACAN - SEC Pro",
+    role: "Panéliste",
+    date: "2024",
+    image: "assets/events/Pannel ACAN - SEC Pro.jpeg",
+    description: "Échanges et retours d'expérience sur les enjeux professionnels actuels."
+  },
+  {
+    title: "Tech Talk",
+    role: "Speaker",
+    date: "2024",
+    image: "assets/events/Tech Talk - Affiche.jpg",
+    description: "Discussion autour des technologies émergentes et de l'optimisation."
+  },
+  {
+    title: "Management & Méthodologie Agile",
+    role: "Formateur",
+    date: "2023",
+    image: "assets/events/Affiche_Formation_Managemtn et Méthodologie Agile avec Gestion des imprévus.jpg",
+    description: "Formation avec gestion des imprévus."
+  },
+  {
+    title: "Conférence Edem Cyrille",
+    role: "Intervenant",
+    date: "2023",
+    image: "assets/events/Edem Cyrile.jpg",
+    description: "Partage d'expérience et parcours professionnel."
+  },
+  {
+    title: "Conférence Edem Cyrille 2",
+    role: "Intervenant",
+    date: "2022",
+    image: "assets/events/Edem Cyrille 2.jpg",
+    description: "Suite des échanges sur l'optimisation des processus."
+  },
+  {
+    title: "Évènement WhatsApp",
+    role: "Participant",
+    date: "2025",
+    image: "assets/events/WhatsApp Image 2025-05-06 à 19.24.22_fb286c4a.jpg",
+    description: "Retour sur un évènement communautaire."
+  }
+];
+
 const CERTS = [
   { title: "Développement Commercial — Gestion d'inventaire", issuer: "HP LIFE", date: "2026", link: "https://www.life-global.org/certificate/956b291e-bb13-498a-899f-95f6a118abf5" },
   { title: "Développement Commercial — Anticiper les ventes", issuer: "HP LIFE", date: "2026", link: "https://www.life-global.org/certificate/75b13e08-5968-4d8e-a52a-b959969ab560" },
@@ -381,6 +440,28 @@ timelineEl.addEventListener("click", (e) => {
   const expanded = card.classList.toggle("expanded");
   label.textContent = expanded ? btn.dataset.less : btn.dataset.more;
 });
+
+// ===================== RENDER EVENTS =====================
+const eventsMarquee = document.getElementById("eventsMarquee");
+if(eventsMarquee) {
+  const renderEvent = (e) => `
+    <div class="event-card">
+      <div class="event-img-wrap">
+        <img src="${e.image}" alt="${e.title}" loading="lazy">
+      </div>
+      <div class="event-content">
+        <h3>${e.title}</h3>
+        <p class="event-meta"><strong>${e.role}</strong> &middot; ${e.date}</p>
+        <p class="event-desc">${e.description}</p>
+      </div>
+    </div>
+  `;
+  
+  // Pour un effet marquee infini, on duplique le contenu
+  const eventsHtml = EVENTS.map(renderEvent).join("");
+  // On insère deux groupes d'évènements pour assurer la continuité lors du défilement
+  eventsMarquee.innerHTML = `<div class="marquee-group">${eventsHtml}</div><div class="marquee-group" aria-hidden="true">${eventsHtml}</div>`;
+}
 
 // ===================== RENDER CERTIFICATIONS =====================
 const certGrid = document.getElementById("certGrid");
