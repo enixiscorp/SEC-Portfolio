@@ -49,7 +49,7 @@ function iconForStat(s){
 }
 
 // ===================== DATA =====================
-const MARKETS_11 = ["Togo","Bénin","Cameroun","Mali","RDC","Botswana","Zambie","Zimbabwe","Namibie","République dominicaine","République du Costa Rica"];
+const MARKETS_20 = ["Belgique","Bénin","Bolivie","Botswana","Cameroun","Chypre","Côte d'Ivoire","France","Italie","Mali","Malte","Namibie","Portugal","RDC","République dominicaine","République du Costa Rica","Slovénie","Togo","Zambie","Zimbabwe"];
 
 const STATS = [
   { num: "850", label: "coursiers pilotés dans le dispositif d'activation Yango (17 mois)" },
@@ -58,12 +58,12 @@ const STATS = [
   { num: "30M", label: "FCFA de bonus de parrainage gérés (Yango)" },
   { num: "140K+", label: "utilisateurs-mois VTC couverts en gestion des risques (Bolt Safety)" },
   { num: "-45%", label: "d'incidents critiques réduits sur le périmètre Safety (Bolt)" },
-  { num: "8K+", label: "profils chauffeurs validés sur 11 marchés (Bolt Expansion)" },
+  { num: "8K+", label: "profils chauffeurs validés sur 20 marchés (Bolt Expansion)" },
   { num: "120%", label: "de l'objectif de conversion dépassé (Bolt Expansion)" },
   { num: "92%", label: "de satisfaction client maintenue (Bolt, support VTC)" },
   { num: "25%", label: "d'amélioration qualité obtenue en 6 semaines (Bolt, coaching)" },
   { num: "60%", label: "de temps de reporting économisé grâce à l'automatisation (MC Impact)" },
-  { num: "11", label: "marchés internationaux pilotés simultanément", markets: MARKETS_11 },
+  { num: "20", label: "marchés internationaux pilotés simultanément", markets: MARKETS_20 },
 ];
 
 const SKILLS = [
@@ -170,15 +170,15 @@ const TIMELINE = [
     role: "Chargé des Opérations d'Expansion, Support Bolt",
     org: "Majorel Africa - Teleperformance · Sur site, Lomé",
     period: "Fév. 2024 — Août 2024",
-    intro: "Pilotage des opérations d'activation des chauffeurs sur 11 marchés simultanément, avec conception du module de formation officiel du département.",
+    intro: "Pilotage des opérations d'activation des chauffeurs sur 20 marchés simultanément, avec conception du module de formation officiel du département.",
     skills: ["Expansion multi-marchés","Contrôle documentaire","Formation","Conformité"],
     bullets: [
       "Atteint 120% des objectifs de conversion d'activation des chauffeurs, en optimisant le parcours d'intégration et la vérification documentaire.",
-      "Structuré les opérations d'activation sur 11 marchés simultanément, avec des procédures communes de contrôle documentaire et de conformité.",
+      "Structuré les opérations d'activation sur 20 marchés simultanément, avec des procédures communes de contrôle documentaire et de conformité.",
       "Contribué à la validation d'environ 8 000+ profils chauffeurs sur la période, avec près de 4 000 activations effectives — soit un funnel validation → activation de l'ordre de 50%.",
       "Standardisé la transmission des connaissances du département en concevant le module officiel de formation des nouveaux spécialistes.",
       "Utilisé des campagnes de communication ciblées (InfoBip) pour accélérer les activations sur des environnements africains et latino-américains.",
-      { markets: MARKETS_11 },
+      { markets: MARKETS_20 },
     ]
   },
   {
