@@ -9,7 +9,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=4">
+<!-- core : socle partagé par toutes les sections -->
+<link rel="stylesheet" href="assets/core/variables.css">
+<link rel="stylesheet" href="assets/core/reset.css">
+<link rel="stylesheet" href="assets/core/background.css">
+<link rel="stylesheet" href="assets/core/buttons.css">
+<link rel="stylesheet" href="assets/core/reveal.css">
+<link rel="stylesheet" href="assets/core/layout.css">
+<link rel="stylesheet" href="assets/core/nav.css">
+<link rel="stylesheet" href="assets/core/socials.css">
+<!-- sections : un fichier indépendant par section -->
+<link rel="stylesheet" href="assets/sections/hero/hero.css">
+<link rel="stylesheet" href="assets/sections/stats/stats.css">
+<link rel="stylesheet" href="assets/sections/profil/profil.css">
+<link rel="stylesheet" href="assets/sections/competences/competences.css">
+<link rel="stylesheet" href="assets/sections/experience/experience.css">
+<link rel="stylesheet" href="assets/sections/events/events.css">
+<link rel="stylesheet" href="assets/sections/projects/projects.css">
+<link rel="stylesheet" href="assets/sections/certifications/certifications.css">
+<link rel="stylesheet" href="assets/sections/contact/contact.css">
+<link rel="stylesheet" href="assets/sections/footer/footer.css">
 </head>
 <body>
 
@@ -45,6 +64,7 @@
     <a href="#competences" data-nav>Compétences</a>
     <a href="#experience" data-nav>Expérience</a>
     <a href="#events" data-nav>Évènements</a>
+    <a href="#projets" data-nav>Projets</a>
     <a href="#certifications" data-nav>Certifications</a>
     <a href="#contact" data-nav>Contact</a>
   </nav>
@@ -98,7 +118,7 @@
   <!-- STATS -->
   <section class="stats" id="stats">
     <div class="section-inner">
-      <div class="stats-grid" id="statsGrid"></div>
+      <div id="statsGrid"></div>
     </div>
   </section>
 
@@ -166,10 +186,25 @@
     </div>
   </section>
 
-  <!-- CERTIFICATIONS -->
-  <section class="section section-light" id="certifications">
+  <!-- PROJETS -->
+  <section class="section section-light" id="projets">
     <div class="section-inner">
-      <p class="tag" data-reveal>05 · Certifications</p>
+      <p class="tag" data-reveal>05 · Projets</p>
+      <h2 data-reveal>Ressources &amp; sites <span class="grad-text">réalisés</span></h2>
+      <p class="profil-text" data-reveal style="margin-bottom:28px;">Un aperçu des ressources conçues (formations, fichiers, business cases…) et des sites vitrines livrés. Les ressources confidentielles ne sont visibles qu'en aperçu (jusqu'à 5 pages) — le reste est disponible sur demande.</p>
+      <div class="project-filters" id="projectFilters" data-reveal>
+        <button class="project-filter active" type="button" data-filter="all">Tous</button>
+        <button class="project-filter" type="button" data-filter="ressource">Ressources</button>
+        <button class="project-filter" type="button" data-filter="site">Sites Web</button>
+      </div>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section section-light alt" id="certifications">
+    <div class="section-inner">
+      <p class="tag" data-reveal>06 · Certifications</p>
       <h2 data-reveal>Apprentissage <span class="grad-text">continu</span></h2>
       <div class="cert-grid" id="certGrid"></div>
     </div>
@@ -178,7 +213,7 @@
   <!-- CONTACT -->
   <section class="section contact" id="contact">
     <div class="section-inner">
-      <p class="tag" data-reveal>06 · Contact</p>
+      <p class="tag" data-reveal>07 · Contact</p>
       <h2 data-reveal>Construisons <span class="grad-text">la prochaine étape</span></h2>
       <p class="profil-text" data-reveal>Un projet, une opportunité, une mission de conseil ? Le plus rapide est WhatsApp — un message est déjà prêt.</p>
       <div class="contact-cta" data-reveal>
@@ -204,6 +239,29 @@
   </div>
 </footer>
 
-<script src="assets/js/script.js?v=4"></script>
+<div class="doc-modal" id="docModal" aria-hidden="true">
+  <div class="doc-modal-backdrop" id="docModalBackdrop"></div>
+  <div class="doc-modal-box" role="dialog" aria-modal="true" aria-labelledby="docModalTitle">
+    <button class="doc-modal-close" id="docModalClose" aria-label="Fermer l'aperçu">
+      <svg viewBox="0 0 24 24" class="ic"><path fill="currentColor" d="m6.4 5 12.6 12.6-1.4 1.4L5 6.4 6.4 5Zm12.6 1.4L6.4 19 5 17.6 17.6 5 19 6.4Z"/></svg>
+    </button>
+    <div class="doc-modal-header">
+      <span class="doc-modal-badge" id="docModalBadge">Document</span>
+      <h3 id="docModalTitle"></h3>
+    </div>
+    <div class="doc-modal-viewer">
+      <button class="doc-nav doc-nav-prev" id="docPrev" aria-label="Page précédente">
+        <svg viewBox="0 0 24 24" class="ic"><path fill="currentColor" d="M15.4 6 9.4 12l6 6-1.4 1.4L6.6 12l7.4-7.4L15.4 6Z"/></svg>
+      </button>
+      <div class="doc-slides" id="docSlides"></div>
+      <button class="doc-nav doc-nav-next" id="docNext" aria-label="Page suivante">
+        <svg viewBox="0 0 24 24" class="ic"><path fill="currentColor" d="M8.6 6 14.6 12l-6 6 1.4 1.4L17.4 12 10 4.6 8.6 6Z"/></svg>
+      </button>
+    </div>
+    <div class="doc-modal-dots" id="docDots"></div>
+  </div>
+</div>
+
+<script type="module" src="assets/main.js"></script>
 </body>
 </html>

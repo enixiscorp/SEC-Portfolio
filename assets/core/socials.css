@@ -1,0 +1,10 @@
+.social-row{ display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+.social-row a{
+  width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--card-border); background:var(--card); color:var(--muted);
+  transition: transform .25s, color .25s, border-color .25s, box-shadow .25s;
+}
+.social-row a svg{ width:20px; height:20px; }
+.social-row a:hover{ transform:translateY(-3px); color:var(--text); border-color:var(--blue-2); box-shadow:var(--shadow-blue); }
+.social-row-lg a{ width:52px; height:52px; }
+.social-row-lg a svg{ width:23px; height:23px; }

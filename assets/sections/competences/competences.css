@@ -1,0 +1,20 @@
+.skills-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; }
+.skill-card{
+  background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius); padding:24px;
+  transition:border-color .3s, transform .3s;
+}
+.section-light .skill-card{ box-shadow:0 10px 30px rgba(15,18,30,.06); }
+.skill-card:hover{ border-color:var(--orange); transform:translateY(-4px); }
+.skill-card h3{ font-family:var(--ff-display); font-size:16px; margin-bottom:14px; color:var(--text); display:flex; align-items:center; gap:10px;}
+.skill-card h3 .dotmark{ width:8px; height:8px; border-radius:50%; background:var(--blue); flex-shrink:0;}
+.chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+.chip{
+  font-size:12.5px; padding:6px 12px; border-radius:999px; border:1px solid var(--card-border);
+  color:var(--muted); background:rgba(255,255,255,0.02); transition:.25s;
+}
+.section-light .chip{ background:rgba(15,18,30,.03); }
+.chip:hover{ color:var(--text); border-color:var(--blue-2); background:rgba(0,102,204,.08); }
+
+@media (max-width: 900px){
+  .skills-grid{ grid-template-columns:1fr; }
+}

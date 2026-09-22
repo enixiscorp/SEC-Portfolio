@@ -1,0 +1,35 @@
+.timeline{ position:relative; padding-left:32px; border-left:2px solid var(--card-border); }
+.tl-item{ position:relative; padding-bottom:44px; }
+.tl-item:last-child{ padding-bottom:0; }
+.tl-dot{ position:absolute; left:-42px; top:2px; width:18px; height:18px; border-radius:50%; background:var(--bg); border:3px solid var(--blue-2); }
+.section-light .tl-dot{ background:var(--bg-light); }
+.tl-item.orange .tl-dot{ border-color:var(--orange); }
+.tl-card{ background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius); padding:26px 28px; }
+.section-light .tl-card{ box-shadow:0 10px 34px rgba(15,18,30,.07); }
+.tl-top{ display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:12px; }
+.tl-badge{ font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#ffffff; background:var(--blue); padding:5px 13px; border-radius:999px; white-space:nowrap; }
+.tl-role{ display:block; font-family:var(--ff-display); font-weight:700; font-size:18px; margin-bottom:4px; }
+.tl-period{ font-size:12.5px; color:var(--blue-2); white-space:nowrap; border:1px solid rgba(0,102,204,.3); padding:4px 10px; border-radius:999px; }
+.section-light .tl-period{ color:var(--blue); background:rgba(0,102,204,.06); }
+.tl-org{ font-size:13.5px; color:var(--muted); margin-bottom:14px; }
+.tl-intro{ font-size:14.5px; color:var(--muted); line-height:1.65; margin-bottom:6px; }
+.tl-subhead{ font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:18px 0 10px; }
+.tl-list{ display:flex; flex-direction:column; gap:8px; }
+.tl-list li{ font-size:14px; color:var(--text); opacity:.9; padding-left:18px; position:relative; }
+.tl-list li::before{ content:''; position:absolute; left:0; top:7px; width:6px; height:6px; border-radius:50%; background:var(--blue); }
+.tl-list li.tl-markets{ color:var(--text); opacity:1; font-weight:600; font-size:13px; padding-left:0; letter-spacing:.01em; }
+.tl-list li.tl-markets::before{ display:none; }
+.tl-list-more{ display:none; margin-top:8px; }
+.tl-card.expanded .tl-list-more{ display:flex; }
+.tl-toggle{
+  display:inline-flex; align-items:center; gap:4px; margin-top:14px; background:none; border:none; cursor:pointer;
+  font-size:13px; font-weight:600; color:var(--blue-2); padding:0;
+}
+.section-light .tl-toggle{ color:var(--blue); }
+.tl-toggle .ic-chev{ width:16px; height:16px; transition:transform .25s; }
+.tl-card.expanded .tl-toggle .ic-chev{ transform:rotate(180deg); }
+.tl-skills{ display:flex; flex-wrap:wrap; gap:8px; }
+
+@media (max-width: 960px){
+  .tl-head{ flex-direction:column; }
+}

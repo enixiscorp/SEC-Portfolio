@@ -1,0 +1,16 @@
+.section{ position:relative; z-index:1; padding:110px 0; }
+.section.alt{ background:linear-gradient(180deg, transparent, rgba(0,102,204,0.035), transparent); }
+.section-light{
+  background:var(--bg-light);
+  --text:#11131c;
+  --muted:#5c6272;
+  --card:#ffffff;
+  --card-border:rgba(15,18,30,.08);
+  --shadow-blue:0 20px 50px rgba(0,102,204,.16);
+  --shadow-orange:0 20px 50px rgba(255,107,53,.16);
+  color:var(--text);
+}
+.section-light.alt{ background:var(--bg-light-alt); }
+.tag{ font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--orange-2); margin-bottom:14px; font-weight:600; }
+.section-light .tag{ color:var(--orange); }
+.section h2{ font-family:var(--ff-display); font-size:clamp(26px,4.2vw,42px); font-weight:800; margin-bottom:36px; max-width:680px; }
