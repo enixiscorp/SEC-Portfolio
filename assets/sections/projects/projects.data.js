@@ -17,11 +17,35 @@ export const PROJECTS = [
   },
   {
     type: "site",
-    title: "Exemple de site vitrine à ajouter",
-    category: "Site Web",
-    description: "Remplace cette entrée par un site vitrine réalisé : ajoute une capture d'écran (image) et le lien public (link) vers le site.",
-    image: null,
-    link: "#"
+    title: "Seder",
+    category: "Livraison de repas · Lomé",
+    description: "Plateforme de commande de repas en ligne : composition de plat sur mesure, menus prêts à commander et livraison rapide à Lomé.",
+    image: "assets/sites/seder/cover.jpg",
+    link: "https://seder-mu.vercel.app/"
+  },
+  {
+    type: "site",
+    title: "Enixis Corp",
+    category: "Conseil & Solutions Digitales",
+    description: "Site vitrine officiel d'Enixis Corp : présentation des services (développement, design, automatisation, formation), des projets réalisés et prise de contact.",
+    image: "assets/sites/enixiscorp/cover.jpg",
+    link: "https://enixiscorp.vercel.app/"
+  },
+  {
+    type: "site",
+    title: "Krantos",
+    category: "Énergie · Togo",
+    description: "Calculateur intelligent pour dimensionner un groupe électrogène et mise en relation instantanée avec des vendeurs vérifiés via WhatsApp.",
+    image: "assets/sites/krantos/cover.jpg",
+    link: "https://krantos.vercel.app/"
+  },
+  {
+    type: "site",
+    title: "NaturExpress",
+    category: "E-commerce · Épices & herbes",
+    description: "Boutique en ligne d'épices, herbes aromatiques et mélanges 100% naturels, avec livraison à domicile partout au Togo.",
+    image: "assets/sites/natur-express/cover.jpg",
+    link: "https://natur-express.vercel.app/"
   },
   {
     type: "document",
