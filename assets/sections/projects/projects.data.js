@@ -67,6 +67,14 @@ export const PROJECTS = [
     link: "https://natur-express.vercel.app/"
   },
   {
+    type: "site",
+    title: "Miss Léa Fashion Brand",
+    category: "CRM & Boutique en ligne · Mode",
+    description: "Site CRM et boutique d'accessoires de mode : catalogue par catégorie, commande avec livraison, échanges WhatsApp, inscription aux nouveautés avec consentement et réservation d'ateliers créatifs.",
+    image: "assets/sites/miss-lea/cover.jpg",
+    link: "https://missleaaccessories.vercel.app/"
+  },
+  {
     type: "document",
     title: "Comment créer une activité génératrice de revenu afin de bâtir un patrimoine",
     kind: "Conférence",
