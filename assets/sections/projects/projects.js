@@ -63,6 +63,7 @@ function initFilters(){
 }
 
 // ---- visionneuse de documents (lightbox) ----
+const MAX_PREVIEW_PAGES = 5;
 let currentDocProject = null;
 let currentDocIndex = 0;
 
@@ -72,7 +73,7 @@ function docWaLink(p){
 }
 
 function buildDocSlides(p){
-  const imgs = [p.cover, ...(p.pages || [])].filter(Boolean).slice(0, 5);
+  const imgs = [p.cover, ...(p.pages || [])].filter(Boolean).slice(0, MAX_PREVIEW_PAGES);
   const slides = imgs.map(src => ({ type: "image", src }));
   if(!slides.length) slides.push({ type: "placeholder" });
   slides.push({ type: "locked" });
@@ -84,7 +85,7 @@ function renderDocSlide(){
   const slide = slides[currentDocIndex];
   const slidesEl = document.getElementById("docSlides");
   if(slide.type === "image"){
-    slidesEl.innerHTML = `<img src="${slide.src}" alt="${currentDocProject.title} — page ${currentDocIndex + 1}" onerror="this.closest('.doc-slides').innerHTML='<div class=&quot;doc-slide-empty&quot;>${ICONS.document.replace(/"/g, "'")}<p>Image introuvable : ${slide.src}</p></div>'">`;
+    slidesEl.innerHTML = `<img src="${slide.src}" alt="${currentDocProject.title} — page ${currentDocIndex + 1}" decoding="async" onerror="this.closest('.doc-slides').innerHTML='<div class=&quot;doc-slide-empty&quot;>${ICONS.document.replace(/"/g, "'")}<p>Image introuvable : ${slide.src}</p></div>'">`;
   } else if(slide.type === "placeholder"){
     slidesEl.innerHTML = `<div class="doc-slide-empty">${ICONS.document}<p>Aperçu à venir</p></div>`;
   } else {
@@ -95,6 +96,12 @@ function renderDocSlide(){
         <a class="btn btn-primary" href="${docWaLink(currentDocProject)}" target="_blank" rel="noopener">Contacter pour consulter</a>
       </div>`;
   }
+  document.getElementById("docThumbs").innerHTML = slides.map((sl, i) => {
+    const inner = sl.type === "image"
+      ? `<img src="${sl.src}" alt="Page ${i + 1}" decoding="async">`
+      : (sl.type === "locked" ? ICONS.lock : ICONS.document);
+    return `<button type="button" class="doc-thumb ${sl.type === "locked" ? "doc-thumb-lock" : ""} ${i === currentDocIndex ? "active" : ""}" data-dot="${i}" aria-label="${sl.type === "locked" ? "Pages suivantes (confidentielles)" : "Page " + (i + 1)}">${inner}</button>`;
+  }).join("");
   document.getElementById("docDots").innerHTML = slides.map((_, i) =>
     `<span class="doc-dot ${i === currentDocIndex ? "active" : ""}" data-dot="${i}"></span>`
   ).join("");
@@ -107,6 +114,7 @@ function openDocModal(idx){
   currentDocIndex = 0;
   document.getElementById("docModalTitle").textContent = currentDocProject.title;
   document.getElementById("docModalBadge").textContent = currentDocProject.category || "Document";
+  buildDocSlides(currentDocProject).forEach(sl => { if(sl.type === "image") new Image().src = sl.src; });
   renderDocSlide();
   document.getElementById("docModal").setAttribute("aria-hidden", "false");
   document.body.classList.add("doc-modal-open");
@@ -136,11 +144,13 @@ function initDocModal(){
     const slides = buildDocSlides(currentDocProject);
     if(currentDocIndex < slides.length - 1){ currentDocIndex++; renderDocSlide(); }
   });
-  document.getElementById("docDots").addEventListener("click", (e) => {
-    const dot = e.target.closest("[data-dot]");
-    if(!dot) return;
-    currentDocIndex = Number(dot.dataset.dot);
-    renderDocSlide();
+  ["docDots", "docThumbs"].forEach(id => {
+    document.getElementById(id).addEventListener("click", (e) => {
+      const dot = e.target.closest("[data-dot]");
+      if(!dot) return;
+      currentDocIndex = Number(dot.dataset.dot);
+      renderDocSlide();
+    });
   });
 }
 

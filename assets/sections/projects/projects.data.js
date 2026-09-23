@@ -7,13 +7,32 @@
 // "kind" est le libellé court affiché sur le badge de la carte (ex: "Formation", "Fichier", "Business Case", "Conférence").
 export const PROJECTS = [
   {
-    type: "formation",
-    title: "Programme de Formation en Marketing Digital",
+    type: "document",
+    title: "Formation Complète — Marketing Digital (9 modules)",
     kind: "Formation",
-    category: "Formation · 9 modules",
-    description: "Programme conçu pour Enixis Corp : 9 modules structurés autour de cas pratiques et de solutions d'IA, destinés aux entrepreneurs et PME accompagnés.",
-    image: null,
-    link: null
+    category: "Formation · Enixis Corp Academy",
+    description: "9 modules, de la visibilité à la monétisation : stratégie de contenu, LinkedIn, prompt engineering, Canva, email marketing et plan d'action 90 jours.",
+    cover: "assets/documents/marketing-digital-9-modules/page-1.jpg",
+    pages: [
+      "assets/documents/marketing-digital-9-modules/page-2.jpg",
+      "assets/documents/marketing-digital-9-modules/page-3.jpg",
+      "assets/documents/marketing-digital-9-modules/page-4.jpg",
+      "assets/documents/marketing-digital-9-modules/page-5.jpg"
+    ]
+  },
+  {
+    type: "document",
+    title: "Agile in Action — Du Projet au Leadership : gérer les imprévus",
+    kind: "Formation",
+    category: "Masterclass + Escape Room · Tech Campus Club × Lomé Business School",
+    description: "Masterclass de 5 h (4 modules + simulation) sur la gestion de projet Agile, le management d'équipe et les comptes rendus professionnels, avec mise en situation.",
+    cover: "assets/documents/agile-in-action-gestion-imprevus/page-1.jpg",
+    pages: [
+      "assets/documents/agile-in-action-gestion-imprevus/page-2.jpg",
+      "assets/documents/agile-in-action-gestion-imprevus/page-3.jpg",
+      "assets/documents/agile-in-action-gestion-imprevus/page-4.jpg",
+      "assets/documents/agile-in-action-gestion-imprevus/page-5.jpg"
+    ]
   },
   {
     type: "site",
