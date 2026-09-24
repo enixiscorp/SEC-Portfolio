@@ -2,12 +2,13 @@
 import { ICONS } from "../../core/icons.js";
 import { CONTACT } from "../../core/config.js";
 import { PROJECTS } from "./projects.data.js";
+import { openDashboardDemo } from "./dashboard-demo.js";
 
-const PROJECT_TYPE_LABEL = { formation: "Formation", site: "Site Web", document: "Document" };
-const PROJECT_TYPE_ICON = { formation: ICONS.cert, site: ICONS.globe, document: ICONS.document };
+const PROJECT_TYPE_LABEL = { formation: "Formation", site: "Site Web", document: "Document", dashboard: "Dashboard" };
+const PROJECT_TYPE_ICON = { formation: ICONS.cert, site: ICONS.globe, document: ICONS.document, dashboard: ICONS.document };
 
 function projectMedia(p){
-  const img = p.type === "document" ? p.cover : p.image;
+  const img = (p.type === "document" || p.type === "dashboard") ? p.cover : p.image;
   if(img) return `<img src="${img}" alt="${p.title}" loading="lazy" onerror="this.outerHTML='<span class=&quot;project-placeholder-ic&quot;>${PROJECT_TYPE_ICON[p.type].replace(/"/g, "'")}</span>'">`;
   return `<span class="project-placeholder-ic">${PROJECT_TYPE_ICON[p.type]}</span>`;
 }
@@ -18,6 +19,9 @@ function projectCTA(p, idx){
   }
   if(p.type === "document"){
     return `<button class="project-cta" type="button" data-doc-open="${idx}">Consulter l'aperçu ${ICONS.external}</button>`;
+  }
+  if(p.type === "dashboard"){
+    return `<button class="project-cta" type="button" data-demo-open="${idx}">Voir la démo animée ${ICONS.external}</button>`;
   }
   if(p.link){
     return `<a class="project-cta" href="${p.link}" target="_blank" rel="noopener">En savoir plus ${ICONS.external}</a>`;
@@ -33,7 +37,7 @@ function renderProjects(filter){
     .map((p, idx) => ({ p, idx }))
     .filter(({ p }) => {
       if(filter === "all") return true;
-      if(filter === "ressource") return p.type === "formation" || p.type === "document";
+      if(filter === "ressource") return p.type === "formation" || p.type === "document" || p.type === "dashboard";
       return p.type === filter;
     });
   projectsGrid.innerHTML = list.map(({ p, idx }) => `
@@ -85,7 +89,7 @@ function renderDocSlide(){
   const slide = slides[currentDocIndex];
   const slidesEl = document.getElementById("docSlides");
   if(slide.type === "image"){
-    slidesEl.innerHTML = `<img src="${slide.src}" alt="${currentDocProject.title} — page ${currentDocIndex + 1}" decoding="async" onerror="this.closest('.doc-slides').innerHTML='<div class=&quot;doc-slide-empty&quot;>${ICONS.document.replace(/"/g, "'")}<p>Image introuvable : ${slide.src}</p></div>'">`;
+    slidesEl.innerHTML = `<img src="${slide.src}" alt="${currentDocProject.title} — page ${currentDocIndex + 1}" decoding="async" onerror="this.closest('.doc-slides').innerHTML='<div class=&quot;doc-slide-empty&quot;>${ICONS.document.replace(/"/g, "'")}<p>Image introuvable : ${slide.src}</p></div>'"><button class="doc-expand" type="button" data-expand aria-label="Agrandir en plein écran">${ICONS.expand}<span>Plein écran</span></button>`;
   } else if(slide.type === "placeholder"){
     slidesEl.innerHTML = `<div class="doc-slide-empty">${ICONS.document}<p>Aperçu à venir</p></div>`;
   } else {
@@ -107,6 +111,51 @@ function renderDocSlide(){
   ).join("");
   document.getElementById("docPrev").disabled = currentDocIndex === 0;
   document.getElementById("docNext").disabled = currentDocIndex === slides.length - 1;
+  if(isFullOpen()) renderFull();
+}
+
+// ---- lecture en plein écran (mêmes pages que l'aperçu, limite MAX_PREVIEW_PAGES inchangée) ----
+function isFullOpen(){
+  return document.getElementById("docFull").getAttribute("aria-hidden") === "false";
+}
+
+function renderFull(){
+  const slides = buildDocSlides(currentDocProject);
+  const slide = slides[currentDocIndex];
+  const stage = document.getElementById("docFullStage");
+  if(slide.type === "image"){
+    stage.innerHTML = `<img src="${slide.src}" alt="${currentDocProject.title} — page ${currentDocIndex + 1}" decoding="async">`;
+  } else if(slide.type === "placeholder"){
+    stage.innerHTML = `<div class="doc-slide-empty">${ICONS.document}<p>Aperçu à venir</p></div>`;
+  } else {
+    stage.innerHTML = `
+      <div class="doc-slide-locked">
+        ${ICONS.lock}
+        <p>Le reste de ce document est confidentiel.</p>
+        <a class="btn btn-primary" href="${docWaLink(currentDocProject)}" target="_blank" rel="noopener">Contacter pour consulter</a>
+      </div>`;
+  }
+  const total = slides.filter(sl => sl.type === "image").length;
+  document.getElementById("docFullCounter").textContent =
+    slide.type === "locked" ? "Pages suivantes · sur demande" : `${currentDocProject.title} — Page ${currentDocIndex + 1} / ${total}`;
+  document.getElementById("docFullPrev").disabled = currentDocIndex === 0;
+  document.getElementById("docFullNext").disabled = currentDocIndex === slides.length - 1;
+}
+
+function openFull(){
+  renderFull();
+  document.getElementById("docFull").setAttribute("aria-hidden", "false");
+}
+function closeFull(){
+  document.getElementById("docFull").setAttribute("aria-hidden", "true");
+}
+
+function goDoc(delta){
+  const slides = buildDocSlides(currentDocProject);
+  const next = currentDocIndex + delta;
+  if(next < 0 || next > slides.length - 1) return;
+  currentDocIndex = next;
+  renderDocSlide();
 }
 
 function openDocModal(idx){
@@ -120,6 +169,7 @@ function openDocModal(idx){
   document.body.classList.add("doc-modal-open");
 }
 function closeDocModal(){
+  closeFull();
   document.getElementById("docModal").setAttribute("aria-hidden", "true");
   document.body.classList.remove("doc-modal-open");
 }
@@ -127,6 +177,8 @@ function closeDocModal(){
 function initDocModal(){
   if(projectsGrid){
     projectsGrid.addEventListener("click", (e) => {
+      const demoBtn = e.target.closest("[data-demo-open]");
+      if(demoBtn){ openDashboardDemo(PROJECTS[Number(demoBtn.dataset.demoOpen)]); return; }
       const btn = e.target.closest("[data-doc-open]");
       if(!btn) return;
       openDocModal(Number(btn.dataset.docOpen));
@@ -136,13 +188,23 @@ function initDocModal(){
   if(!docModal) return;
   document.getElementById("docModalClose").addEventListener("click", closeDocModal);
   document.getElementById("docModalBackdrop").addEventListener("click", closeDocModal);
-  document.addEventListener("keydown", e => { if(e.key === "Escape") closeDocModal(); });
-  document.getElementById("docPrev").addEventListener("click", () => {
-    if(currentDocIndex > 0){ currentDocIndex--; renderDocSlide(); }
+  document.addEventListener("keydown", e => {
+    const modalOpen = document.getElementById("docModal").getAttribute("aria-hidden") === "false";
+    if(!modalOpen) return;
+    if(e.key === "Escape"){ isFullOpen() ? closeFull() : closeDocModal(); }
+    else if(e.key === "ArrowLeft") goDoc(-1);
+    else if(e.key === "ArrowRight") goDoc(1);
   });
-  document.getElementById("docNext").addEventListener("click", () => {
-    const slides = buildDocSlides(currentDocProject);
-    if(currentDocIndex < slides.length - 1){ currentDocIndex++; renderDocSlide(); }
+  document.getElementById("docPrev").addEventListener("click", () => goDoc(-1));
+  document.getElementById("docNext").addEventListener("click", () => goDoc(1));
+  document.getElementById("docSlides").addEventListener("click", (e) => {
+    if(e.target.closest("[data-expand]") || e.target.closest("img")) openFull();
+  });
+  document.getElementById("docFullClose").addEventListener("click", closeFull);
+  document.getElementById("docFullPrev").addEventListener("click", () => goDoc(-1));
+  document.getElementById("docFullNext").addEventListener("click", () => goDoc(1));
+  document.getElementById("docFull").addEventListener("click", (e) => {
+    if(e.target.id === "docFull" || e.target.id === "docFullStage") closeFull();
   });
   ["docDots", "docThumbs"].forEach(id => {
     document.getElementById(id).addEventListener("click", (e) => {
