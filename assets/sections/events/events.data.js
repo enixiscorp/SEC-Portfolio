@@ -62,5 +62,12 @@ export const EVENTS = [
     date: "21 Septembre 2026",
     image: "assets/events/Cadrer un Projet avec Intention - Les Pros de la Tech.jpg",
     description: "Atelier pratique axé sur la définition d'une vision claire, l'établissement des objectifs stratégiques, la délimitation précise du périmètre et l'élaboration d'une stratégie d'exécution efficace pour les projets tech et digitaux."
+  },
+  {
+    title: "Planifier et organiser un projet : du cadrage à l'exécution",
+    role: "Formateur · Les Pros de la Tech (#ProjectManagement)",
+    date: "28 Septembre 2026",
+    image: "assets/events/Planifier et Organiser un Projet - Les Pros de la Tech.jpg",
+    description: "Session pratique axée sur la structuration opérationnelle des projets digitaux : passage de la phase de cadrage à l'exécution à travers l'élaboration d'un backlog, la construction d'une roadmap stratégique et la clarification des rôles au sein de l'équipe."
   }
 ];
