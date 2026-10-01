@@ -36,6 +36,13 @@ export const EVENTS = [
     description: "Atelier immersif et interactif basé sur le management agile, visant à tester la prise de décision sous pression, la coordination d'équipe et l'adaptation face aux imprévus."
   },
   {
+    title: "MIABÉ Hackathon Togo 2026 : évaluation et sélection de projets innovants (Blockchain)",
+    role: "Membre du Jury National · MIABÉ Hackathon",
+    date: "25 Avril – 16 Mai 2026",
+    image: "assets/events/Miabe Hackathon - Membre du Jury.jpg",
+    description: "Participation à l'évaluation structurée des projets et des pitchs sur trois étapes majeures (présélection, demi-finale et finale) pour sélectionner et accompagner les meilleures solutions innovantes axées sur la blockchain."
+  },
+  {
     title: "Créer un système complet d'organisation avec Trello",
     role: "Intervenant · MasterClass 2026",
     date: "27 Avril 2026",
