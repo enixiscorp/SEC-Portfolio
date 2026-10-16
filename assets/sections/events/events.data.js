@@ -76,5 +76,19 @@ export const EVENTS = [
     date: "28 Septembre 2026",
     image: "assets/events/Planifier et Organiser un Projet - Les Pros de la Tech.jpg",
     description: "Session pratique axée sur la structuration opérationnelle des projets digitaux : passage de la phase de cadrage à l'exécution à travers l'élaboration d'un backlog, la construction d'une roadmap stratégique et la clarification des rôles au sein de l'équipe."
+  },
+  {
+    title: "Piloter le projet comme un professionnel : De l'exécution au pilotage (maîtriser les risques, les ressources, les KPIs et l'équipe)",
+    role: "Formateur · Les Pros de la Tech (#ProjectManagement)",
+    date: "05 Octobre 2026",
+    image: "assets/events/Piloter le Projet comme un Professionnel - Les Pros de la Tech.jpg",
+    description: "Formation avancée axée sur le suivi et la conduite de projet, couvrant la gestion opérationnelle des risques, la maîtrise des ressources, le pilotage par les indicateurs clés de performance (KPIs) et le management d'équipe."
+  },
+  {
+    title: "Piloter un projet face aux imprévus : Réagir aux incidents, décider sous pression et défendre ses décisions",
+    role: "Formateur · Les Pros de la Tech (#ProjectManagement)",
+    date: "12 Octobre 2026",
+    image: "assets/events/Piloter un Projet face aux Imprévus - Les Pros de la Tech.jpg",
+    description: "Atelier pratique axé sur la gestion de crise et l'adaptabilité opérationnelle : techniques de réaction face aux incidents, prise de décision stratégique sous pression et défense argumentée des choix de gestion auprès des parties prenantes."
   }
 ];
